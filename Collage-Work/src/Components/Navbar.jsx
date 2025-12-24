@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import SigningBox from "./SigningBox";
+
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
 
   const handleButtonToggle = () => {
     setShowMenu(!showMenu);
   };
+
+  // Close sidebar when route changes (for mobile navigation)
+  useEffect(() => {
+    setShowMenu(false);
+  }, [location.pathname]);
 
   return (
     <header>

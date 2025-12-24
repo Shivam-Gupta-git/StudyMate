@@ -12,11 +12,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CSE from "./pages/CSE";
 import IT from "./pages/IT";
 import Footer from "./Components/Footer";
+import ScrollToTop from "./Components/ScrollToTop";
+
 function App() {
   return (
  
     <BrowserRouter>
-    <Navbar/>
+      <ScrollToTop />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About/>} />
