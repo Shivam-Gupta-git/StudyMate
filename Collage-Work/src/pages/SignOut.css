@@ -1,0 +1,293 @@
+.signout-main-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 80px 20px;
+  margin-top: -80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signout-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.signout-left {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.signout-hero-content {
+  text-align: center;
+}
+
+.signout-hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.signout-hero-content > p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.signout-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  text-align: left;
+}
+
+.benefit-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.benefit-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.benefit-item p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.signout-image {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.signout-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.signout-right {
+  padding: 60px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signout-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.signout-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.signout-header h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.signout-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.signout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.input-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #f5576c;
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.form-checkbox input {
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.form-checkbox span {
+  line-height: 1.5;
+}
+
+.signout-btn {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+}
+
+.signout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(245, 87, 108, 0.6);
+}
+
+.signout-divider {
+  text-align: center;
+  position: relative;
+  margin: 20px 0;
+}
+
+.signout-divider::before,
+.signout-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.signout-divider::before {
+  left: 0;
+}
+
+.signout-divider::after {
+  right: 0;
+}
+
+.signout-divider span {
+  background: white;
+  padding: 0 15px;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.social-signout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.social-btn:hover {
+  border-color: #f5576c;
+  background: #fff5f7;
+}
+
+.social-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.signout-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.signout-footer a {
+  color: #f5576c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signout-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 968px) {
+  .signout-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .signout-left {
+    padding: 40px 20px;
+  }
+  
+  .signout-hero-content h1 {
+    font-size: 2rem;
+  }
+}
+
