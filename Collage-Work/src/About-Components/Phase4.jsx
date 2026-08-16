@@ -1,37 +1,34 @@
-import React from 'react'
-import styles from './Phase4.module.css'
-import { Phase4Info } from './Data_Storage_Con'
+import React from 'react';
+import styles from './Phase4.module.css';
+import { Phase4Info } from './Data_Storage_Con';
+import { FaGraduationCap, FaCheckCircle } from 'react-icons/fa';
 
 function Phase4() {
+  const info = Phase4Info[0];
+  if (!info) return null;
+
   return (
-    <>
-    {Phase4Info.map((items)=>(
-      <div className={styles.Phase4_main_container}>
-        <div className={styles.info_container1}>
-          <div className={styles.image_box1}>
-            <img className={styles.image} src={items.image1} alt="" />
-          </div>
-          <div className={styles.image_box2}>
-          <img className={styles.image} src={items.image2} alt="" />
-          </div>
-          <div className={styles.image_box3}>
-          <img className={styles.image} src={items.image3} alt="" />
-          </div>
-          <div className={styles.image_box4}>
-          <img className={styles.image} src={items.image4} alt="" />
-          </div>
+    <section className={styles.sectionWrapper}>
+      <div className={`${styles.storyCard} glass-card`}>
+        <div className={styles.imageGrid}>
+          <img src={info.image1} alt="CSE Laboratory" className={styles.imgMain} />
         </div>
-        <div className={styles.info_container2}>
-         <h1 className={styles.cheat_sheet1}>{items.heading1}</h1>
-         <p className={styles.cheat_sheet2}>{items.heading2}</p>
-         <h1 className={styles.cheat_sheet1}>Using The Latest</h1><h1 className={styles.cheat_sheet3}>Technology</h1>
-         <p className={styles.cheat_sheet2}>{items.heading4}</p>
-        
+
+        <div className={styles.textContent}>
+          <span className={styles.badge}>Our Journey</span>
+          <h2 className={styles.title}>{info.heading1}</h2>
+          <p className={styles.description}>{info.heading2}</p>
+          <p className={styles.description}>{info.heading3}</p>
+
+          <div className={styles.checklist}>
+            <div><FaCheckCircle className={styles.checkIcon} /> 100% Free & Open Academic Access</div>
+            <div><FaCheckCircle className={styles.checkIcon} /> Peer-Reviewed & Faculty Curated</div>
+            <div><FaCheckCircle className={styles.checkIcon} /> Optimized for Mobile & Desktop Reading</div>
+          </div>
         </div>
       </div>
-    ))}
-    </>
-  )
+    </section>
+  );
 }
 
-export default Phase4
+export default Phase4;

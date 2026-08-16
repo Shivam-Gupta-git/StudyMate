@@ -1,6 +1,83 @@
-.Phase9_main_container{
-  height: 300px;
+.sectionWrapper {
   width: 100%;
-  background-color: rgba(69, 146, 146, 0.395);
-  margin-top: 50px;
+  max-width: 1280px;
+  margin: 60px auto 40px;
+  padding: 0 20px;
+}
+
+.ctaCard {
+  width: 100%;
+  padding: 60px 36px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.25) 0%, rgba(14, 165, 233, 0.25) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), var(--shadow-glow);
+  text-align: center;
+}
+
+.ctaContent {
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.badge {
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #d1d5db;
+  line-height: 1.65;
+}
+
+.featuresPillRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.featuresPillRow span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.checkIcon {
+  color: var(--accent);
+}
+
+.actionsRow {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
 }

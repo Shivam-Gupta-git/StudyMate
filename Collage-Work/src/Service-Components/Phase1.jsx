@@ -1,20 +1,20 @@
-import React from 'react'
-import styles from './Phase1.module.css'
-import { Phase1Info } from './Data_Storage_con'
+import React from 'react';
+import styles from './Phase1.module.css';
+import { Phase1Info } from './Data_Storage_con';
 
 function Phase1() {
-  return (
-    <>
-    {Phase1Info.map((items)=>(
+  const info = Phase1Info[0];
+  if (!info) return null;
 
-    <div className={styles.Phase1_main_container}>
-      <h1 className={styles.cheat_sheet1}>{items.heading1}</h1>
-      <p className={styles.cheat_sheet2}>{items.heading2}</p>
-    </div>
-    ))}
-    
-    </>
-  )
+  return (
+    <section className={styles.heroSection}>
+      <div className={styles.contentBox}>
+        <span className={styles.badge}>StudyMate Services</span>
+        <h1 className={styles.title}>{info.heading1}</h1>
+        <p className={styles.description}>{info.heading2}</p>
+      </div>
+    </section>
+  );
 }
 
-export default Phase1
+export default Phase1;

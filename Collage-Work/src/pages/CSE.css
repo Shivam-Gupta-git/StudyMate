@@ -1,196 +1,177 @@
 .cse-main-container {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 100px 20px 50px;
-  margin-top: -80px;
+  min-height: calc(100vh - 90px);
+  padding: 60px 20px;
+}
+
+.cse-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 .cse-hero-section {
-  max-width: 1200px;
-  margin: 0 auto 60px;
-  display: flex;
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
   align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 40px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
 }
 
 .cse-hero-content {
-  flex: 1;
-  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .cse-main-title {
-  font-size: 3rem;
-  color: white;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
 }
 
 .cse-subtitle {
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
-.cse-hero-image {
-  flex: 1;
-  min-width: 300px;
+.cse-hero-actions {
+  margin-top: 8px;
 }
 
 .cse-hero-image img {
   width: 100%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  height: 280px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .cse-content-section {
-  max-width: 1200px;
-  margin: 0 auto 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
 .cse-info-card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.cse-info-card:hover {
-  transform: translateY(-10px);
+  gap: 16px;
 }
 
 .cse-icon-box {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 20px;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(79, 70, 229, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 50%;
-  padding: 15px;
-}
-
-.cse-icon-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.cse-info-card h2 {
-  color: #333;
-  margin-bottom: 15px;
   font-size: 1.5rem;
 }
 
+.cse-info-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
 .cse-info-card p {
-  color: #666;
+  font-size: 0.9rem;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
 .cse-courses-section {
-  max-width: 1200px;
-  margin: 0 auto 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .cse-section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
   text-align: center;
-  font-size: 2.5rem;
-  color: white;
-  margin-bottom: 40px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .cse-courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .cse-course-card {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.cse-course-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .cse-course-card h3 {
-  color: #667eea;
-  margin-bottom: 10px;
-  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
 }
 
 .cse-course-card p {
-  color: #666;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
 .cse-student-section {
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .cse-students-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .cse-student-card {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 30px;
-  border-radius: 15px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  gap: 14px;
 }
 
 .cse-student-card img {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  margin-bottom: 20px;
   object-fit: cover;
+  border: 2px solid var(--primary);
 }
 
 .cse-student-card h3 {
-  color: #333;
-  margin-bottom: 10px;
-  font-size: 1.3rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 .cse-student-card p {
-  color: #666;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-  .cse-main-title {
-    font-size: 2rem;
-  }
-  
-  .cse-subtitle {
-    font-size: 1.2rem;
-  }
-  
+@media (max-width: 992px) {
   .cse-hero-section {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
-

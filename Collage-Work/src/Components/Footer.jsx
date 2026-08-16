@@ -1,115 +1,129 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styles from './Footer.module.css'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './Footer.module.css';
+import { 
+  FaGraduationCap, 
+  FaFacebookF, 
+  FaTwitter, 
+  FaInstagram, 
+  FaLinkedinIn, 
+  FaEnvelope, 
+  FaPhoneAlt, 
+  FaMapMarkerAlt, 
+  FaArrowUp, 
+  FaPaperPlane 
+} from 'react-icons/fa';
 
-const Footer = () => {
+const Footer = ({ onToast }) => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!email) return;
+    if (onToast) {
+      onToast('Thank you for subscribing to StudyMate updates!', 'success');
+    } else {
+      alert('Thank you for subscribing to StudyMate updates!');
+    }
+    setEmail('');
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
+        {/* Brand Column */}
         <div className={styles.footerSection}>
-          <h3 className={styles.footerTitle}>Hellomates</h3>
+          <Link to="/" className={styles.brandBox}>
+            <div className={styles.brandIcon}>
+              <FaGraduationCap />
+            </div>
+            <span className={styles.brandText}>Study<span className="gradient-text">Mate</span></span>
+          </Link>
           <p className={styles.footerDescription}>
-            Your one-stop solution for accessing quality study materials. 
-            We provide semester-wise notes tailored to your course and branch.
+            Your one-stop academic platform for semester notes, PYQs, syllabi, mock tests, and career guidance tailored for engineering & college students.
           </p>
           <div className={styles.socialLinks}>
-            <a href="#" className={styles.socialLink} aria-label="Facebook">
-              <img src="/Images/userFriendly.png" alt="Facebook" />
-            </a>
-            <a href="#" className={styles.socialLink} aria-label="Twitter">
-              <img src="/Images/search.png" alt="Twitter" />
-            </a>
-            <a href="#" className={styles.socialLink} aria-label="Instagram">
-              <img src="/Images/teaching.png" alt="Instagram" />
-            </a>
-            <a href="#" className={styles.socialLink} aria-label="LinkedIn">
-              <img src="/Images/book1.png" alt="LinkedIn" />
-            </a>
+            <a href="#" className={styles.socialLink} aria-label="Facebook"><FaFacebookF /></a>
+            <a href="#" className={styles.socialLink} aria-label="Twitter"><FaTwitter /></a>
+            <a href="#" className={styles.socialLink} aria-label="Instagram"><FaInstagram /></a>
+            <a href="#" className={styles.socialLink} aria-label="LinkedIn"><FaLinkedinIn /></a>
           </div>
         </div>
 
+        {/* Quick Links */}
         <div className={styles.footerSection}>
           <h4 className={styles.sectionTitle}>Quick Links</h4>
           <ul className={styles.footerLinks}>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/About">About Us</Link></li>
-            <li><Link to="/Services">Services</Link></li>
-            <li><Link to="/Contact">Contact</Link></li>
-            <li><Link to="/FeedBack">Feedback</Link></li>
+            <li><Link to="/">Home Portal</Link></li>
+            <li><Link to="/About">About Platform</Link></li>
+            <li><Link to="/Services">Academic Services</Link></li>
+            <li><Link to="/Contact">Contact Support</Link></li>
+            <li><Link to="/FeedBack">Student Feedback</Link></li>
           </ul>
         </div>
 
+        {/* Departments */}
         <div className={styles.footerSection}>
-          <h4 className={styles.sectionTitle}>Courses</h4>
+          <h4 className={styles.sectionTitle}>Branches</h4>
           <ul className={styles.footerLinks}>
-            <li><Link to="/cse">Computer Science</Link></li>
-            <li><Link to="/it">Information Technology</Link></li>
-            <li><Link to="/Services">All Courses</Link></li>
-            <li><Link to="/About">Study Materials</Link></li>
-            <li><Link to="/Services">Resources</Link></li>
+            <li><Link to="/cse">Computer Science (CSE)</Link></li>
+            <li><Link to="/it">Information Technology (IT)</Link></li>
+            <li><Link to="/Services">Electronics & Comm. (ECE)</Link></li>
+            <li><Link to="/Services">Mechanical Engineering</Link></li>
+            <li><Link to="/Services">Civil Engineering</Link></li>
           </ul>
         </div>
 
+        {/* Contact Info & Newsletter */}
         <div className={styles.footerSection}>
-          <h4 className={styles.sectionTitle}>Contact Info</h4>
+          <h4 className={styles.sectionTitle}>Newsletter</h4>
+          <p className={styles.newsletterText}>Get updates on newly published notes and PYQs.</p>
+          <form className={styles.newsletterForm} onSubmit={handleSubscribe}>
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required
+            />
+            <button type="submit" aria-label="Subscribe">
+              <FaPaperPlane />
+            </button>
+          </form>
           <ul className={styles.contactInfo}>
             <li>
-              <img src="/Images/search.png" alt="Email" className={styles.contactIcon} />
-              <span>support@hellomates.com</span>
+              <FaEnvelope className={styles.contactIcon} />
+              <span>support@studymate.edu</span>
             </li>
             <li>
-              <img src="/Images/secure.png" alt="Phone" className={styles.contactIcon} />
-              <span>+91 123 456 7890</span>
-            </li>
-            <li>
-              <img src="/Images/user1.png" alt="Address" className={styles.contactIcon} />
-              <span>123 Education Street, Learning City, 123456</span>
-            </li>
-            <li>
-              <img src="/Images/teaching.png" alt="Hours" className={styles.contactIcon} />
-              <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className={styles.footerSection}>
-          <h4 className={styles.sectionTitle}>Features</h4>
-          <ul className={styles.footerLinks}>
-            <li>
-              <img src="/Images/book1.png" alt="Notes" className={styles.featureIcon} />
-              <span>Study Notes</span>
-            </li>
-            <li>
-              <img src="/Images/search.png" alt="Search" className={styles.featureIcon} />
-              <span>Easy Search</span>
-            </li>
-            <li>
-              <img src="/Images/secure.png" alt="Secure" className={styles.featureIcon} />
-              <span>Secure Platform</span>
-            </li>
-            <li>
-              <img src="/Images/userFriendly.png" alt="User Friendly" className={styles.featureIcon} />
-              <span>User Friendly</span>
+              <FaPhoneAlt className={styles.contactIcon} />
+              <span>+91 98765 43210</span>
             </li>
           </ul>
         </div>
       </div>
 
+      {/* Footer Bottom */}
       <div className={styles.footerBottom}>
         <div className={styles.footerBottomContent}>
-          <p>&copy; {new Date().getFullYear()} Hellomates. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} StudyMate Portal. All rights reserved.</p>
           <div className={styles.footerBottomLinks}>
-            <Link to="/">Privacy Policy</Link>
-            <span>|</span>
-            <Link to="/">Terms of Service</Link>
-            <span>|</span>
-            <Link to="/Contact">Support</Link>
+            <Link to="/About">Privacy Policy</Link>
+            <span>•</span>
+            <Link to="/About">Terms of Service</Link>
+            <span>•</span>
+            <button onClick={scrollToTop} className={styles.scrollTopBtn} aria-label="Back to top">
+              Back to Top <FaArrowUp />
+            </button>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
-
+export default Footer;

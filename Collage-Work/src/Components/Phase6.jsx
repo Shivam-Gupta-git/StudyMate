@@ -1,29 +1,30 @@
-import React from 'react'
-import styles from './Phase6.module.css'
-import { phase6Info } from './CarouselData'
-import { Phase6_Gsap } from './Gsap'
+import React from 'react';
+import styles from './Phase6.module.css';
+import { FaUserGraduate, FaFileAlt, FaPercentage, FaBookmark } from 'react-icons/fa';
 
 function Phase6() {
+  const stats = [
+    { icon: <FaUserGraduate />, number: "15,000+", label: "Active Students" },
+    { icon: <FaFileAlt />, number: "500+", label: "Verified Study Notes" },
+    { icon: <FaPercentage />, number: "98.4%", label: "Exam Success Rate" },
+    { icon: <FaBookmark />, number: "50+", label: "Academic Subjects" }
+  ];
 
-  Phase6_Gsap()
   return (
-    <>
-    {phase6Info.map((items, index)=>(
-    <div key={index} className={styles.Phase6_main_container}>
-      <div className={[styles.template1, "Phase6_template1"].join(" ")}>
-        <h1 className={styles.info_cheat_sheet1}>{items.heading1}</h1>
-        <p className={styles.info_cheat_sheet2}>{items.heading2}</p>
+    <section className={styles.sectionWrapper}>
+      <div className={`${styles.statsCard} glass-card`}>
+        <div className={styles.statsGrid}>
+          {stats.map((item, index) => (
+            <div key={index} className={styles.statBox}>
+              <div className={styles.iconCircle}>{item.icon}</div>
+              <h3 className={styles.statNumber}>{item.number}</h3>
+              <p className={styles.statLabel}>{item.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className={[styles.template2, "Phase6_template2"].join(" ")}>
-       <h2 className={styles.info_cheat_sheet2}>
-        {items.heading3}
-       </h2>
-       <button className={styles.button}>Click</button>
-      </div>
-    </div>
-    ))} 
-    </>
-  )
+    </section>
+  );
 }
 
-export default Phase6
+export default Phase6;

@@ -28,13 +28,13 @@
 }
 
 .iconCircle {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: rgba(79, 70, 229, 0.2);
   border: 1px solid var(--primary);
   color: #ffffff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,50 +1,89 @@
 import React, { useEffect, useState } from "react";
 import "./Carousel.css";
-import { Carousel_Gsap } from "./Gsap";
+import { FaChevronLeft, FaChevronRight, FaBookOpen, FaRocket } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Carousel({ items }) {
-  Carousel_Gsap()
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // const[autoPlay, setAotuPlay] = useState(true)
-  
-  useEffect(()=>{
-   setTimeout(()=>{
-    slideRight();
-   },3000)  
-  })
-  const slideLeft = ()=>{
-    setCurrent(current === 0 ? items.length - 1 : current - 1 )
-  }
-  const slideRight = ()=>{
-    setCurrent(current === items.length - 1 ? 0 : current + 1)
-  }
-  // console.log(current)
+  useEffect(() => {
+    if (isPaused || !items || items.length === 0) return;
+
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, [isPaused, items]);
+
+  const slideLeft = () => {
+    setCurrent(current === 0 ? items.length - 1 : current - 1);
+  };
+
+  const slideRight = () => {
+    setCurrent(current === items.length - 1 ? 0 : current + 1);
+  };
+
+  if (!items || items.length === 0) return null;
+
   return (
-    <> 
-      <div className="carousel">
-        <div className='Carousel_wrapper'>
-          {items.map((imageItem, index) => (
-            <div key={index} className={index == current  ? 'Crausel_card  Crausel_card-active' : 'Crausel_card' }>
-              <img className='card_image' src={imageItem.image} alt="" />
-              <div className='card_overlay'>
-                <h2 className="">{imageItem.titel}</h2>
+    <section 
+      className="carousel-section"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="carousel-container">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={`carousel-slide ${index === current ? "slide-active" : ""}`}
+          >
+            <div className="carousel-image-wrap">
+              <img className="carousel-img" src={item.image} alt={item.title || "StudyMate Banner"} />
+              <div className="carousel-scrim" />
+            </div>
+            
+            <div className="carousel-content">
+              {item.badge && (
+                <span className="carousel-badge">{item.badge}</span>
+              )}
+              <h1 className="carousel-title">{item.title}</h1>
+              <p className="carousel-subtitle">{item.subtitle}</p>
+              
+              <div className="carousel-actions">
+                <Link to="/Services" className="btn-primary">
+                  <FaBookOpen /> Browse Materials
+                </Link>
+                <Link to="/cse" className="btn-secondary">
+                  <FaRocket /> View Departments
+                </Link>
               </div>
             </div>
-          ))}
-          <div className="carousel_arrow_left" onClick={slideLeft}>&lsaquo;</div>
-          <div className="carousel_arrow_right" onClick={slideRight}>&rsaquo;</div>
-          <div className="carousel_pagination">
-            {items.map((_,index)=>{
-              return(
-                <div key={index} className={index == current  ? 'pagination_dot  pagination_dot-active' : 'pagination_dot' }
-                onClick={()=>setCurrent(index)}></div>
-              )
-            })}
           </div>
+        ))}
+
+        {/* Controls */}
+        <button className="carousel-arrow arrow-left" onClick={slideLeft} aria-label="Previous slide">
+          <FaChevronLeft />
+        </button>
+        <button className="carousel-arrow arrow-right" onClick={slideRight} aria-label="Next slide">
+          <FaChevronRight />
+        </button>
+
+        {/* Pagination Dots */}
+        <div className="carousel-dots">
+          {items.map((_, index) => (
+            <button
+              key={index}
+              className={`dot ${index === current ? "dot-active" : ""}`}
+              onClick={() => setCurrent(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

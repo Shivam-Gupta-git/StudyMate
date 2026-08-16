@@ -1,91 +1,29 @@
-import React, { useEffect, useState } from "react";
-import "./Phase2.css";
-import { Phase2ImageCard1, Phase2ImageCard2, Phase2ImageCard3, Phase2ImageCard4 } from "./Data_Storage_Con";
+import React from 'react';
+import styles from './Phase2.module.css';
+import { FaUserGraduate, FaFilePdf, FaCheckCircle, FaBuilding } from 'react-icons/fa';
+
 function Phase2() {
-  const [currentVal, setCurrentVal] = useState(0);
+  const stats = [
+    { icon: <FaUserGraduate />, number: "15,000+", label: "Enrolled Students" },
+    { icon: <FaFilePdf />, number: "500+", label: "Verified Study Notes" },
+    { icon: <FaCheckCircle />, number: "98.4%", label: "Passing Rate" },
+    { icon: <FaBuilding />, number: "50+", label: "Partner Universities" }
+  ];
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      slideRight();
-    },3000)
-  })
-
-  const slideRight = () => {
-    setCurrentVal(currentVal === Phase2ImageCard1.length - 1 ? 0 : currentVal + 1);
-  };
   return (
-
-    <>
-    
-    <div className="Phase2-main-container">
-      <div className="carousel-container1">
-        {Phase2ImageCard1.map((items, index) => (
-          <div
-            key={index}
-            className={
-              index == currentVal
-                ? "carousel-card carousel-card-active"
-                : "carousel-card"
-            }
-          >
-            <img className="card-image" src={items.carouselBox1Img1} alt="" />
-          </div>
-        ))}
+    <section className={styles.sectionWrapper}>
+      <div className={`${styles.statsCard} glass-card`}>
+        <div className={styles.statsGrid}>
+          {stats.map((item, index) => (
+            <div key={index} className={styles.statBox}>
+              <div className={styles.iconCircle}>{item.icon}</div>
+              <h3 className={styles.statNumber}>{item.number}</h3>
+              <p className={styles.statLabel}>{item.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
-
-
-      <div className="carousel-container2">
-   
-        {Phase2ImageCard2.map((items, index) => (
-          <div
-            key={index}
-            className={
-              index == currentVal
-                ? "carousel-card carousel-card-active"
-                : "carousel-card"
-            }
-          >
-            <img className="card-image" src={items.carouselBox1Img1} alt="" />
-          </div>
-        ))}
-      </div>
-
-
-      <div className="carousel-container3">
-   
-        {Phase2ImageCard3.map((items, index) => (
-          <div
-            key={index}
-            className={
-              index == currentVal
-                ? "carousel-card carousel-card-active"
-                : "carousel-card"
-            }
-          >
-            <img className="card-image" src={items.carouselBox1Img1} alt="" />
-          </div>
-        ))}
-      </div>
-
-      <div className="carousel-container4">
-   
-        {Phase2ImageCard4.map((items, index) => (
-          <div
-            key={index}
-            className={
-              index == currentVal
-                ? "carousel-card carousel-card-active"
-                : "carousel-card"
-            }
-          >
-            <img className="card-image" src={items.carouselBox1Img1} alt="" />
-          </div>
-        ))}
-      </div>
-
-      </div>
-    </>
-
+    </section>
   );
 }
 

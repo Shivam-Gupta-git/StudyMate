@@ -1,21 +1,15 @@
-import React from 'react'
-import Phase1 from '../Contact-Components/Phase1'
-import './Contact.css'
-import Phase2 from '../Contact-Components/Phase2'
-import Footer from '../Components/Footer'
+import React from 'react';
+import Phase1 from '../Contact-Components/Phase1';
+import Phase2 from '../Contact-Components/Phase2';
+import './Contact.css';
 
-const Contact = () => {
+const Contact = ({ onToast }) => {
   return (
-    <>
-    
-    <div className='Contact-main-container'>
-
-    <Phase1></Phase1>
-    <Phase2></Phase2>
+    <div className="Contact-main-container">
+      <Phase1 />
+      <Phase2 onToast={onToast} />
     </div>
-  
-    </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

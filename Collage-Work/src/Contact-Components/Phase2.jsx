@@ -1,94 +1,152 @@
-import React from 'react'
-import styles from './Phase2.module.css'
-import { Phase2Info } from './Data_Storage_Con'
-import { FaPhoneAlt } from "react-icons/fa";
-import { MdMarkEmailUnread } from "react-icons/md";
-import { FaHome } from "react-icons/fa";
-import { FaSquareInstagram } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { TbBrandLinkedinFilled } from "react-icons/tb";
-import { FaYoutube } from "react-icons/fa";
-function Phase2() {
+import React, { useState } from 'react';
+import styles from './Phase2.module.css';
+import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaPaperPlane, FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+
+function Phase2({ onToast }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    if (onToast) {
+      onToast(`Thank you ${formData.name}! Your message has been sent to support.`, 'success');
+    } else {
+      alert(`Thank you ${formData.name}! Your message has been sent to support.`);
+    }
+
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+  };
+
   return (
-    <>
-    
-    {Phase2Info.map((items)=>(
+    <section className={styles.sectionWrapper}>
+      <div className={styles.container}>
+        {/* Info Column */}
+        <div className={`${styles.infoCard} glass-card`}>
+          <span className={styles.badge}>Get In Touch</span>
+          <h2 className={styles.title}>We'd Love to Hear From You</h2>
+          <p className={styles.subtitle}>
+            Have questions about study notes, course syllabus, or feedback? Send us a message and our academic team will respond within 24 hours.
+          </p>
 
-    <div className={styles.Phase2_main_container}>
-      <div className={styles.info_container1}>
-        <div className={styles.info_box1}>
-          <h1 className={styles.cheat_sheet1}>{items.heading1}</h1>
-          <p className={styles.cheat_sheet2}>{items.heading2}</p>
-        </div>
-        <div className={styles.info_box2}>
-          <div className={styles.info_part1}>
-            <div className={styles.icon_box}>
-            <FaPhoneAlt className={styles.icon1}/>
+          <div className={styles.contactDetails}>
+            <div className={styles.detailItem}>
+              <div className={styles.iconCircle}><FaEnvelope /></div>
+              <div>
+                <h4>Email Support</h4>
+                <p>support@studymate.edu</p>
+              </div>
             </div>
-            <div className={styles.icon_box_info}>
-              <h1 className={styles.cheat_sheet3}>{items.heading3}</h1>
-              <p className={styles.cheat_sheet4}>{items.heading4}</p>
+
+            <div className={styles.detailItem}>
+              <div className={styles.iconCircle}><FaPhoneAlt /></div>
+              <div>
+                <h4>Phone Line</h4>
+                <p>+91 98765 43210 (Mon-Fri, 9AM-6PM)</p>
+              </div>
             </div>
-          </div>
-          <div className={styles.info_part1}>
-          <div className={styles.icon_box}>
-          <MdMarkEmailUnread className={styles.icon1}/>
-          </div>
-            <div className={styles.icon_box_info}>
-            <h1 className={styles.cheat_sheet3}>{items.heading5}</h1>
-              <p className={styles.cheat_sheet4}>{items.heading6}</p>
-            </div>
-          </div>
-          <div className={styles.info_part1}>
-          <div className={styles.icon_box}>
-          <FaHome className={styles.icon1}/>
-          </div>
-            <div className={styles.icon_box_info}>
-            <h1 className={styles.cheat_sheet3}>{items.heading7}</h1>
-              <p className={styles.cheat_sheet4}>{items.heading8}</p>
+
+            <div className={styles.detailItem}>
+              <div className={styles.iconCircle}><FaMapMarkerAlt /></div>
+              <div>
+                <h4>Academic Office</h4>
+                <p>123 Education Hub, Tech Park, City 560001</p>
+              </div>
             </div>
           </div>
-          <div className={styles.info_part1}>
-          <div className={styles.icon_box}>
-          <FaSquareInstagram className={styles.icon1}/>
-          </div>
-            <div className={styles.icon_box_info}>
-            <h1 className={styles.cheat_sheet3}>{items.heading9}</h1>
-              <p className={styles.cheat_sheet4}>{items.heading10}</p>
+
+          <div className={styles.socialRow}>
+            <span>Follow Us:</span>
+            <div className={styles.socialIcons}>
+              <a href="#" aria-label="Facebook"><FaFacebookF /></a>
+              <a href="#" aria-label="Twitter"><FaTwitter /></a>
+              <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
+              <a href="#" aria-label="YouTube"><FaYoutube /></a>
             </div>
           </div>
         </div>
-        <div className={styles.SocilaMediaBox}>
-          <h1 className={styles.cheat_sheet5}>Social Medial</h1>
-          <div className={styles.socialIconBox}>
-          <FaFacebook className={styles.icon2}/>
-          </div>
-          <div className={styles.socialIconBox}>
-          <AiFillTwitterCircle className={styles.icon2}/>
-          </div>
-          <div className={styles.socialIconBox}>
-          <TbBrandLinkedinFilled className={styles.icon2}/>
-          </div>
-          <div className={styles.socialIconBox}>
-          <FaYoutube className={styles.icon2} />
-          </div>
+
+        {/* Form Column */}
+        <div className={`${styles.formCard} glass-card`}>
+          <h3 className={styles.formTitle}>Send Us a Message</h3>
+
+          <form className={styles.contactForm} onSubmit={handleSubmit}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="contact-name">Full Name</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor="contact-email">Email Address</label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor="contact-subject">Subject</label>
+              <input
+                type="text"
+                id="contact-subject"
+                name="subject"
+                placeholder="e.g. Note Request / PYQ Inquiry"
+                value={formData.subject}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor="contact-message">Message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                placeholder="Write your message or inquiry here..."
+                value={formData.message}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <button type="submit" className="btn-primary">
+              <FaPaperPlane /> Send Message
+            </button>
+          </form>
         </div>
       </div>
-
-
-      <div className={styles.info_container2}>
-        <input type="text" placeholder='Email' className={styles.inputbox1}/>
-        <input type="text" placeholder='Place' className={styles.inputbox2}/>
-        <input type="text" placeholder='Name' className={styles.inputbox3}/>
-        <input type="text" placeholder='Message' className={styles.inputbox4}/>
-        <button className={styles.button}>Submit </button>
-      </div>
-    </div>
-
-    ))}
-    </>
-  )
+    </section>
+  );
 }
 
-export default Phase2
+export default Phase2;

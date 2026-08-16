@@ -1,34 +1,58 @@
-import React from 'react'
-import styles from './SigningBox.module.css'
-import { useState } from "react";
-import { NavLink } from 'react-router-dom'
+import React, { useState, useRef, useEffect } from 'react';
+import styles from './SigningBox.module.css';
+import { NavLink } from 'react-router-dom';
+import { FaUserCircle, FaSignInAlt, FaUserPlus, FaChevronDown } from 'react-icons/fa';
 
 const SigningBox = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("LogIn");
+  const dropdownRef = useRef(null);
 
-  const options = ["SignIn", "SignOut"];
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
-    <div className={styles.SigningBox}>
-      <button className={styles.logingButtons} onClick={() => setIsOpen(!isOpen)}>
-        {selected}
+    <div className={styles.signingContainer} ref={dropdownRef}>
+      <button 
+        className={styles.logingButton} 
+        onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-label="Account Menu"
+      >
+        <FaUserCircle className={styles.userIcon} />
+        <span>Account</span>
+        <FaChevronDown className={`${styles.chevronIcon} ${isOpen ? styles.chevronOpen : ''}`} />
       </button>
+
       {isOpen && (
         <div className={styles.optionBox}>
-          {options.map((option, index) => (
-            <div
-              key={index}
-              onClick={() => {
-                setSelected(option);
-                setIsOpen(false);
-              }}>
-              <NavLink to={option}>{option}</NavLink>
-            </div>
-          ))}
+          <NavLink 
+            to="/SignIn" 
+            className={styles.optionLink}
+            onClick={() => setIsOpen(false)}
+          >
+            <FaSignInAlt className={styles.optionIcon} />
+            <span>Sign In</span>
+          </NavLink>
+          <NavLink 
+            to="/SignUp" 
+            className={styles.optionLink}
+            onClick={() => setIsOpen(false)}
+          >
+            <FaUserPlus className={styles.optionIcon} />
+            <span>Sign Up</span>
+          </NavLink>
         </div>
       )}
     </div>
   );
 };
+
 export default SigningBox;

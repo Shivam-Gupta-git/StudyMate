@@ -1,49 +1,53 @@
-.Phase1_main_container{
-  height: 400px;
+.heroSection {
   width: 100%;
-  background-color: aqua;
-  justify-content: center;
+  padding: 80px 20px 40px;
+  background: radial-gradient(circle at 50% 20%, rgba(14, 165, 233, 0.2), transparent 70%), var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.contentBox {
+  max-width: 800px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
-.cheat_sheet1{
-  font-size: 50px;
-  font-weight: 600;
-}
-.cheat_sheet2{
-  width: 80%;
-  text-align: center;
-  font-size: 15px;
+.badge {
+  padding: 6px 16px;
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: var(--secondary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-@media(max-width:1050px){
-  .Phase1_main_container{
-    height: 400px;
-  }
-  .cheat_sheet1{
-    font-size: 40px;
-    margin-top: 25px;
-  }
-  .cheat_sheet2{
-    font-size: 13px;
-  }
+.title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
 }
-@media(max-width:800px){
-  .Phase1_main_container{
-    height: 350px;
-  }
-  .cheat_sheet1{
-    font-size: 35px;
-    margin-top: 25px;
-  }
-  .cheat_sheet2{
-    font-size: 14px;
-  }
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
 }
-@media(max-width:500px){
-  .cheat_sheet2{
-    font-size: 12px;
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  .description {
+    font-size: 0.95rem;
   }
 }

@@ -1,115 +1,71 @@
-import React from 'react'
-import { Phase7_Gsap } from './Gsap'
-import styles from './Phase7.module.css'
-import { phase7Info } from './CarouselData'
+import React from 'react';
+import styles from './Phase7.module.css';
+import { phase7Info } from './CarouselData';
+import { FaStar, FaQuoteLeft } from 'react-icons/fa';
 
 function Phase7() {
+  const info = phase7Info[0];
+  if (!info) return null;
 
-  Phase7_Gsap()
+  const reviews = [
+    {
+      name: info.Name1,
+      role: info.role1 || "CSE Student",
+      avatar: info.image1,
+      review: info.review1,
+      rating: 5
+    },
+    {
+      name: info.Name2,
+      role: info.role2 || "IT Student",
+      avatar: info.image2,
+      review: info.review2,
+      rating: 5
+    },
+    {
+      name: info.Name3,
+      role: info.role3 || "ECE Student",
+      avatar: info.image3,
+      review: info.review3,
+      rating: 5
+    }
+  ];
 
   return (
-    <>
-    {phase7Info.map((items, index)=>(
-    <div key={index} className={styles.Phase7_main_container}>
-      <div className={styles.container1}>
-       <h1 className={[styles.titel1,"phase7-titel1"].join(" ")}>{items.heading1}</h1>
-       <p className={[styles.titel2,"phase7-titel2"].join(" ")}>{items.heading2}</p>
-       <div className={styles.info_box_element}>
-        <div className={styles.info_box1}>
-          <div className={styles.icon_info_box1}>
-            <div className={[styles.icon_box1,"phase7-icon-box1"].join(' ')}>
-              <img src="/Images/book1.png" alt="Icon" style={{width: '100%', height: '100%', objectFit: 'contain', padding: '10px'}} />
-            </div>
-            <div className={styles.infoElement}>
-              <h1 className={[styles.titel3,"phase7-titel3"].join(" ")}>{items.heading3}</h1>
-              <p className={[styles.titel4,"phase7-titel4"].join(" ")}>{items.heading4}</p>
-            </div>
-          </div>
-          <div className={styles.icon_info_box2}>
-          <div className={[styles.icon_box1,"phase7-icon-box1"].join(' ')}>
-            <img src="/Images/teaching.png" alt="Icon" style={{width: '100%', height: '100%', objectFit: 'contain', padding: '10px'}} />
-          </div>
-            <div className={styles.infoElement}>
-            <h1 className={[styles.titel3,"phase7-titel3"].join(" ")}>{items.heading5}</h1>
-              <p className={[styles.titel4,"phase7-titel4"].join(" ")}>{items.heading6}</p>
-            </div>
-          </div>
+    <section className={styles.sectionWrapper}>
+      <div className={styles.container}>
+        <div className={styles.headerBox}>
+          <span className={styles.badge}>Student Feedback</span>
+          <h2 className={styles.title}>{info.heading1}</h2>
+          <p className={styles.subtitle}>{info.heading2}</p>
         </div>
-        <div className={[styles.info_box2, "phase7-info-page"].join(" ")}>
-          <div className={styles.info_page}>
-          <p className={styles.titel5}>{items.heading7}</p>
-          </div>
-        </div>
-       </div>
-      </div>
-      <div className={styles.container2}>
-        <div className={[styles.slider_boxes,"Phase7-slider-boxes"].join(" ")}>
-        <div className={styles.main_box}>
-          <div className={styles.boxes}>
-            <div className={styles.box1}>
-              <div className={styles.image1}>
-             <img src={items.image1} alt="" />
-              </div>
-              <div className={styles.review1}>
-              <h1 className={styles.info_review_sheet1}>{items.Name1}</h1>
-             <p className={styles.info_review_sheet2}>{items.review1}</p>
-              </div>
-            </div>
-            <div className={styles.box2}>
-            <div className={styles.image1}>
-             <img src={items.image2} alt="" />
-              </div>
-              <div className={styles.review1}>
-              <h1 className={styles.info_review_sheet1}>{items.Name2}</h1>
-             <p className={styles.info_review_sheet2}>{items.review1}</p>
-              </div>
-            </div>
-            <div className={styles.box3}>
-            <div className={styles.image1}>
-             <img src={items.image3} alt="" />
-              </div>
-              <div className={styles.review1}>
-              <h1 className={styles.info_review_sheet1}>{items.Name3}</h1>
-             <p className={styles.info_review_sheet2}>{items.review3}</p>
-              </div>
-            </div>
-            <div className={styles.box4}>
-            <div className={styles.image1}>
-             <img src="/Images/student1.png" alt="" />
-              </div>
-              <div className={styles.review1}>
-              <h1 className={styles.info_review_sheet1}>Amit Kumar</h1>
-             <p className={styles.info_review_sheet2}>Excellent platform! Found all my study materials easily.</p>
-              </div>
-            </div>
-            <div className={styles.box5}>
-            <div className={styles.image1}>
-             <img src="/Images/student2.png" alt="" />
-              </div>
-              <div className={styles.review1}>
-              <h1 className={styles.info_review_sheet1}>Priya Sharma</h1>
-             <p className={styles.info_review_sheet2}>Very user-friendly interface. Highly recommended!</p>
-              </div>
-            </div>
-            <div className={styles.box6}>
-            <div className={styles.image1}>
-             <img src="/Images/student3.png" alt="" />
-              </div>
-              <div className={styles.review1}>
-              <h1 className={styles.info_review_sheet1}>Rahul Singh</h1>
-             <p className={styles.info_review_sheet2}>Great resource for exam preparation. Thank you!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div></div>
-    </div> 
 
-    ))}
-    </>
-  )
+        <div className={styles.reviewsGrid}>
+          {reviews.map((item, idx) => (
+            <div key={idx} className={`${styles.reviewCard} glass-card`}>
+              <FaQuoteLeft className={styles.quoteIcon} />
+              
+              <p className={styles.reviewText}>{item.review}</p>
+
+              <div className={styles.starRow}>
+                {[...Array(item.rating)].map((_, i) => (
+                  <FaStar key={i} className={styles.starIcon} />
+                ))}
+              </div>
+
+              <div className={styles.userProfile}>
+                <img src={item.avatar} alt={item.name} className={styles.avatar} />
+                <div className={styles.userInfo}>
+                  <h4 className={styles.userName}>{item.name}</h4>
+                  <span className={styles.userRole}>{item.role}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
-export default Phase7
+export default Phase7;
